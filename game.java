@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 /**
  * Write a description of class game here.
@@ -18,7 +19,25 @@ public class game
     }
 
     /**
-     * This method will bring out the board to the user
+     * This method scans user input and passes it to the method that called it
+     
+    public static int scanInput()
+    {
+        // Reading from System.in
+        Scanner reader = new Scanner(System.in).useDelimiter("\\D");  
+        System.out.println("The delimiter use is "+reader.delimiter());
+        System.out.println("Enter a number followed by a comma and another number [X,Y]: ");
+        int x = reader.nextInt(); // Scans the next token of the input as an int.
+        int y = reader.nextInt(); // Scans the next token of the input as an int.
+        System.out.println(x);
+        System.out.println(y);
+        reader.close();
+        return x,y;
+    }
+    */
+    
+    /**
+     * This method will print out the board to the players
      */
     public static void printBoard(String[][] board)
     {
@@ -36,8 +55,19 @@ public class game
     public static String[][] player1Play(String[][] board)
     {
         // Do something
+        
         System.out.println("Player 1 (X) it is your turn.");
         System.out.println("Enter a location (X,Y) to insert your symbol.");
+        //x,y = scanInput();
+        Scanner reader = new Scanner(System.in).useDelimiter("\\D");  
+        System.out.println("The delimiter use is "+reader.delimiter());
+        System.out.println("Enter a number followed by a comma and another number [X,Y]: ");
+        int x = reader.nextInt(); // Scans the next token of the input as an int.
+        int y = reader.nextInt(); // Scans the next token of the input as an int.
+        System.out.println(x);
+        System.out.println(y);
+        reader.close();
+        
         return board;
     }
     
@@ -47,8 +77,19 @@ public class game
     public static String[][] player2Play(String[][] board)
     {
         // Do something
+        
         System.out.println("Player 2 (X) it is your turn.");
         System.out.println("Enter a location (X,Y) to insert your symbol.");
+        //x,y = scanInput();
+        Scanner reader = new Scanner(System.in).useDelimiter("\\D");  
+        System.out.println("The delimiter use is "+reader.delimiter());
+        System.out.println("Enter a number followed by a comma and another number [X,Y]: ");
+        int x = reader.nextInt(); // Scans the next token of the input as an int.
+        int y = reader.nextInt(); // Scans the next token of the input as an int.
+        System.out.println(x);
+        System.out.println(y);
+        reader.close();
+        
         return board;
     }
     
