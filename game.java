@@ -73,12 +73,15 @@ public class game
     public static void printBoard(String[][] board)
     {
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.println("                                 +-------+");
         for (int i = 0; i < board.length; i++) {
+            System.out.print("                                 | ");
             for (int j = 0; j < board[i].length; j++) {
                 System.out.print(board[i][j] + " ");
             }
-            System.out.println();
+            System.out.println("|");
         }
+        System.out.println("                                 +-------+\n\n\n\n");
     }
     
     /**
