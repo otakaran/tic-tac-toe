@@ -68,6 +68,9 @@ public class game
         System.out.println(y);
         reader.close();
         
+        // Modify the board based off user entry
+        board[x-1][y-1] = "X";
+        
         return board;
     }
     
@@ -89,6 +92,9 @@ public class game
         System.out.println(x);
         System.out.println(y);
         reader.close();
+        
+        // Modify the board based off user entry
+        board[x-1][y-1] = "O";
         
         return board;
     }
