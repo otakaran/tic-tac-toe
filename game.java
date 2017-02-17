@@ -89,19 +89,31 @@ public class game
      */
     public static String[][] player1Play(String[][] board)
     {
-        // Do something
-        
+        boolean legal = false;
+        int x = 0;
+        int y = 0;
         System.out.println("Player 1 (X) it is your turn.");
         //x,y = scanInput(); TODO
-        Scanner reader = new Scanner(System.in).useDelimiter("\\D");  
-        System.out.println("Enter a number followed by a comma and another number [X,Y]: ");
-        int x = reader.nextInt(); // Scans the next token of the input as an int.
-        int y = reader.nextInt(); // Scans the next token of the input as an int.
-        reader.close();
+        while (legal == false)
+        {
+            Scanner reader = new Scanner(System.in).useDelimiter("\\D");  
+            System.out.println("Enter a number followed by a comma and another number [X,Y]: ");
+            x = reader.nextInt(); // Scans the next token of the input as an int.
+            y = reader.nextInt(); // Scans the next token of the input as an int.
+            reader.close();
+            if (board[x-1][y-1] == "O")
+            {
+                legal = false;
+                System.out.println("Invalid move!");
+            }
+            else
+            {
+                legal = true;
+            }
+        }
         
         // Modify the board based off user entry
         board[x-1][y-1] = "X";
-        
         return board;
     }
     
@@ -110,19 +122,31 @@ public class game
      */
     public static String[][] player2Play(String[][] board)
     {
-        // Do something
-        
+        boolean legal = false;
+        int x = 0;
+        int y = 0;
         System.out.println("Player 2 (O) it is your turn.");
         //x,y = scanInput(); TODO
-        Scanner reader = new Scanner(System.in).useDelimiter("\\D");  
-        System.out.println("Enter a number followed by a comma and another number [X,Y]: ");
-        int x = reader.nextInt(); // Scans the next token of the input as an int.
-        int y = reader.nextInt(); // Scans the next token of the input as an int.
-        reader.close();
+        while (legal == false)
+        {
+            Scanner reader = new Scanner(System.in).useDelimiter("\\D");  
+            System.out.println("Enter a number followed by a comma and another number [X,Y]: ");
+            x = reader.nextInt(); // Scans the next token of the input as an int.
+            y = reader.nextInt(); // Scans the next token of the input as an int.
+            reader.close();
+            if (board[x-1][y-1] == "X")
+            {
+                legal = false;
+                System.out.println("Invalid move!");
+            }
+            else
+            {
+                legal = true;
+            }
+        }
         
         // Modify the board based off user entry
         board[x-1][y-1] = "O";
-        
         return board;
     }
     
