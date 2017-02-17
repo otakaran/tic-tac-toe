@@ -3,8 +3,8 @@ import java.util.Scanner;
 /**
  * Write a description of class game here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Otakar Andrysek
+ * @version 1.0
  */
 public class game
 {
@@ -19,7 +19,8 @@ public class game
     }
 
     /**
-     * This method scans user input and passes it to the method that called it
+     * This method is broken becuase I do not know how to pass more than one variable outside 
+     * of this method back to the method that called it :(
      
     public static int scanInput()
     {
@@ -37,10 +38,41 @@ public class game
     */
     
     /**
+     * This method declares that player two is the winner and ends the game
+     */
+    public static void startGame()
+    {
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.println(" __          ________ _      _____ ____  __  __ ______   _______ ____  ");
+        try{Thread.sleep(250);}catch(InterruptedException e){System.out.println(e);}
+        System.out.println(" \\ \\        / /  ____| |    / ____/ __ \\|  \\/  |  ____| |__   __/ __ \\ ");
+        try{Thread.sleep(250);}catch(InterruptedException e){System.out.println(e);}
+        System.out.println("  \\ \\  /\\  / /| |__  | |   | |   | |  | | \\  / | |__       | | | |  | |");
+        try{Thread.sleep(250);}catch(InterruptedException e){System.out.println(e);}
+        System.out.println("   \\ \\/  \\/ / |  __| | |   | |   | |  | | |\\/| |  __|      | | | |  | |");
+        try{Thread.sleep(250);}catch(InterruptedException e){System.out.println(e);}
+        System.out.println("    \\  /\\  /  | |____| |___| |___| |__| | |  | | |____     | | | |__| |");
+        try{Thread.sleep(250);}catch(InterruptedException e){System.out.println(e);}
+        System.out.println("  ___\\/__\\/___|______|______\\_____\\____/|_|  |_|______|___ |_|__\\____/ ");
+        try{Thread.sleep(250);}catch(InterruptedException e){System.out.println(e);}
+        System.out.println(" |__   __|_   _/ ____| |__   __|/\\   / ____| |__   __/ __ \\|  ____|    ");
+        try{Thread.sleep(250);}catch(InterruptedException e){System.out.println(e);}
+        System.out.println("    | |    | || |   ______| |  /  \\ | |   ______| | | |  | | |__       ");
+        try{Thread.sleep(250);}catch(InterruptedException e){System.out.println(e);}
+        System.out.println("    | |    | || |  |______| | / /\\ \\| |  |______| | | |  | |  __|      ");
+        try{Thread.sleep(250);}catch(InterruptedException e){System.out.println(e);}
+        System.out.println("    | |   _| || |____     | |/ ____ \\ |____     | | | |__| | |____     ");
+        try{Thread.sleep(250);}catch(InterruptedException e){System.out.println(e);}
+        System.out.println("    |_|  |_____\\_____|    |_/_/    \\_\\_____|    |_|  \\____/|______|    ");;
+        try{Thread.sleep(3000);}catch(InterruptedException e){System.out.println(e);}
+    }
+   
+    /**
      * This method will print out the board to the players
      */
     public static void printBoard(String[][] board)
     {
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
                 System.out.print(board[i][j] + " ");
@@ -57,15 +89,11 @@ public class game
         // Do something
         
         System.out.println("Player 1 (X) it is your turn.");
-        System.out.println("Enter a location (X,Y) to insert your symbol.");
-        //x,y = scanInput();
+        //x,y = scanInput(); TODO
         Scanner reader = new Scanner(System.in).useDelimiter("\\D");  
-        System.out.println("The delimiter use is "+reader.delimiter());
         System.out.println("Enter a number followed by a comma and another number [X,Y]: ");
         int x = reader.nextInt(); // Scans the next token of the input as an int.
         int y = reader.nextInt(); // Scans the next token of the input as an int.
-        System.out.println(x);
-        System.out.println(y);
         reader.close();
         
         // Modify the board based off user entry
@@ -81,16 +109,12 @@ public class game
     {
         // Do something
         
-        System.out.println("Player 2 (X) it is your turn.");
-        System.out.println("Enter a location (X,Y) to insert your symbol.");
-        //x,y = scanInput();
+        System.out.println("Player 2 (O) it is your turn.");
+        //x,y = scanInput(); TODO
         Scanner reader = new Scanner(System.in).useDelimiter("\\D");  
-        System.out.println("The delimiter use is "+reader.delimiter());
         System.out.println("Enter a number followed by a comma and another number [X,Y]: ");
         int x = reader.nextInt(); // Scans the next token of the input as an int.
         int y = reader.nextInt(); // Scans the next token of the input as an int.
-        System.out.println(x);
-        System.out.println(y);
         reader.close();
         
         // Modify the board based off user entry
@@ -137,18 +161,111 @@ public class game
      */
     public static int checkBoard(String[][] board, int turn)
     {
-        // Do something
+        // Win by row one
+        if (board [0][0] == "X" && board [1][0] == "X" && board [2][0] == "X")
+        {
+            turn = 2;
+        }
+        else if (board [0][0] == "O" && board [1][0] == "O" && board [2][0] == "O")
+        {
+            turn = 3;
+        }
+        // Win by row two
+        else if (board [0][1] == "X" && board [1][1] == "X" && board [2][1] == "X")
+        {
+            turn = 2;
+        }
+        else if (board [0][1] == "O" && board [1][1] == "O" && board [2][1] == "O")
+        {
+            turn = 3;
+        }
+        // Win by row three
+        else if (board [0][2] == "X" && board [1][2] == "X" && board [2][2] == "X")
+        {
+            turn = 2;
+        }
+        else if (board [0][2] == "O" && board [1][2] == "O" && board [2][2] == "O")
+        {
+            turn = 3;
+        }
+        
+        // Win by column one
+        else if (board [0][0] == "X" && board [0][1] == "X" && board [0][2] == "X")
+        {
+            turn = 2;
+        }
+        else if (board [0][0] == "O" && board [0][1] == "O" && board [0][2] == "O")
+        {
+            turn = 3;
+        }
+        // Win by column two
+        else if (board [1][0] == "X" && board [1][1] == "X" && board [1][2] == "X")
+        {
+            turn = 2;
+        }
+        else if (board [1][0] == "O" && board [1][1] == "O" && board [1][2] == "O")
+        {
+            turn = 3;
+        }
+        // Win by column three
+        else if (board [2][0] == "X" && board [2][1] == "X" && board [2][2] == "X")
+        {
+            turn = 2;
+        }
+        else if (board [2][0] == "O" && board [2][1] == "O" && board [2][2] == "O")
+        {
+            turn = 3;
+        }
+        
+        // Win by diagonal from top left to bottom right
+        else if (board [0][0] == "X" && board [1][1] == "X" && board [2][2] == "X")
+        {
+            turn = 2;
+        }
+        else if (board [0][0] == "O" && board [1][1] == "O" && board [2][2] == "O")
+        {
+            turn = 3;
+        }
+        // Win by diagonal from top right to bottom left
+        else if (board [0][2] == "X" && board [1][1] == "X" && board [2][0] == "X")
+        {
+            turn = 2;
+        }
+        else if (board [0][2] == "O" && board [1][1] == "O" && board [2][0] == "O")
+        {
+            turn = 3;
+        }
+        
+        // There might be a tie game
+        else
+        {
+            for (int j = 0; j<board[0].length; j++)
+            {
+                for (int i = 0; i<board.length; i++)
+                {
+                    if (board[i][j] == "-")
+                    {
+                        return turn;
+                    }
+                }
+            }
+            turn = 4;
+        }
         return turn;
     }
-    
+   
     /**
      * An example of a method - replace this comment with your own
      */
     public static void main()
     {
+        startGame(); // WIP
         int turn = 0;
         boolean gameOn = true;
+        // Create board
         String[][] board = {{"-", "-", "-"}, {"-", "-", "-"}, {"-", "-", "-"}};
+        
+        // Run segments based on player turn
         while (turn <= 4 && gameOn == true)
         {
             printBoard(board);
@@ -181,6 +298,6 @@ public class game
             }
             turn = checkBoard(board, turn);
         }
-        System.out.println("Error 1");
+        // Todo: Loop game?
     }
 }
