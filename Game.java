@@ -1,45 +1,23 @@
 import java.util.Scanner;
 
 /**
- * Write a description of class game here.
+ * The main game logic.
  * 
- * @author Otakar Andrysek
- * @version 1.0
+ * @author Otakar Andrysek and Ping-Chun Chung
+ * @version v1.1.1
  */
+
 public class Game
 {
-    // instance variables - replace the example below with your own
     // Create board
     String[][] board = {{"-", "-", "-"}, {"-", "-", "-"}, {"-", "-", "-"}};
-    //GUI gui = new GUI();
     int turn = 0;
     boolean gameOn = true;
     int whoPlayFirst = 0;
 
-    /**
-     * This method is broken becuase I do not know how to pass more than one variable outside 
-     * of this method back to the method that called it :(
-
-    public static int scanInput()
-    {
-    // Reading from System.in
-    Scanner reader = new Scanner(System.in).useDelimiter("\\D");  
-    System.out.println("The delimiter use is "+reader.delimiter());
-    System.out.println("Enter a number followed by a comma and another number [X,Y]: ");
-    int x = reader.nextInt(); // Scans the next token of the input as an int.
-    int y = reader.nextInt(); // Scans the next token of the input as an int.
-    System.out.println(x);
-    System.out.println(y);
-    reader.close();
-    return x,y;
-    }
-     */
-
-    /**
-     * This method declares that player two is the winner and ends the game
-     */
     public void startGame()
     {
+        // Print pretty console start menu
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         System.out.println(" __          ________ _      _____ ____  __  __ ______   _______ ____  ");
         try{Thread.sleep(250);}catch(InterruptedException e){System.out.println(e);}
@@ -228,7 +206,7 @@ public class Game
     }
     
     /**
-     * This method clean board
+     * This method cleans the board
      */
     public void resetGame()
     {
@@ -241,6 +219,9 @@ public class Game
         }
     }
     
+    /**
+     * This method decides who plays first in every game
+     */
     public void SwitchWhoPlayFirst()
     {
         whoPlayFirst++;

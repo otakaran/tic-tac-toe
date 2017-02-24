@@ -3,15 +3,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
- * Write a description of class Button here.
+ * This class generates button objects used in the GUI.
  * 
- * @author Ping-Chun Chung
- * @version v1.0
+ * @author Ping-Chun Chung and Otakar Andrysek
+ * @version v1.0.1
  */
+
 public class Button extends JButton
 {
     ImageIcon X,O;    
 
+    // Prepares X and O images for placing
     public Button()
     {
         X =new ImageIcon(this.getClass().getResource("ima/X.png"));
@@ -21,6 +23,7 @@ public class Button extends JButton
         setContentAreaFilled(false);
     }
 
+    // Inserts X and O images into board
     public void setImaIcon(String icon)
     {
         if (icon.equals("-"))

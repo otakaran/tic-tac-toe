@@ -1,13 +1,13 @@
-
 /**
- * Write a description of class RunGame here.
+ * This class prepares and executes the game itself.
  * 
- * @author Ping-Chun Chung
- * @version v1.0
+ * @author Ping-Chun Chung and Otakar Andrysek
+ * @version v1.0.1
  */
+
 public class RunGame
 {
-    // instance variables - replace the example below with your own
+    // Instance variables
     Game game;
     GUI gui;
     Ai ai;
@@ -19,12 +19,13 @@ public class RunGame
         ai = new Ai();
         playGame();
     }
-
+    
+    
     public void playGame()
     {
         while(gameOn)
         {
-            //printBoard
+            // Print the board
             if (gui.playGame){
                 if (game.turn == 0)
                 {
@@ -45,7 +46,6 @@ public class RunGame
                 else if (game.turn == 2)
                 {
                     // Player "X" wins
-                    //game.resetGame();
                     gui.xScore++;
                     gui.xScoreLabel.setText(Integer.toString(gui.xScore));
                     gui.winningLine(game.getWinningLine());
@@ -56,7 +56,6 @@ public class RunGame
                 else if (game.turn == 3)
                 {
                     // Player "O" wins
-                    //game.resetGame();
                     gui.oScore++;
                     gui.oScoreLabel.setText(Integer.toString(gui.oScore));
                     gui.winningLine(game.getWinningLine());
@@ -67,7 +66,6 @@ public class RunGame
                 else if (game.turn == 4)
                 {
                     // There is a tie
-                    //game.resetGame();
                     try{Thread.sleep(1200);}catch(InterruptedException e){System.out.println(e);}
                     gui.displayWinScreen("tie");
                     gui.playGame = false;
@@ -78,6 +76,7 @@ public class RunGame
         }
     }
 
+    // Main function
     public static void main(String[] args)
     {
         new RunGame();
