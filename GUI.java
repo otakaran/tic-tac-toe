@@ -2,12 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 /**
- * Write a description of class GUI here.
+ * Creates a nice looking GUI for the game using Java.awt.
  * 
- * @author Ping-Chun Chung
- * @version v1.0
+ * @author Ping-Chun Chung and Otakar Andrysek
+ * @version v1.0.1
  */
+
 public class GUI extends JFrame implements ActionListener
 {   
     JButton vsPlayerButton;
@@ -38,16 +40,14 @@ public class GUI extends JFrame implements ActionListener
         super("TicTacToe");
         this.game = game;
         displayMenu();
-
-        //Make window exit application on close
+        // Make window exit application on close
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        //Set display size
+        // Set display size
         setSize(500,500);
-        //Center the frame to middle of screen
+        // Center the frame to middle of screen
         setLocationRelativeTo(null);
-        //Disable resize
+        // Disable resize
         setResizable(false);
-
         setVisible(true);
     }
 
@@ -82,19 +82,19 @@ public class GUI extends JFrame implements ActionListener
      */
     public void displayGame()
     {
-        //Outer Panel
+        // Outer Panel
         gameBackground = new JLabel(new ImageIcon(this.getClass().getResource("ima/X_turn.jpg")));
         add(gameBackground);
         gameBackground.setLayout(null);
 
-        //Cneter Panel
+        // Center Panel
         JPanel centerPanel = new JPanel(); 
         centerPanel.setLayout(new GridLayout(3,3,6,6));
         gameBackground.add(centerPanel, BorderLayout.CENTER);
         centerPanel.setBounds(80, 103, 340, 340);
         centerPanel.setOpaque(false);
 
-        // OX buttons
+        // O and X buttons
         for(int i=0; i<3; i++)
         {
             for(int n=0; n<3; n++)
@@ -105,7 +105,7 @@ public class GUI extends JFrame implements ActionListener
             }
         }
 
-        //Home button
+        // Home button
         homeButton = new JButton();
         gameBackground.add(homeButton);
         homeButton.setBounds(442, 355, 34, 34);
@@ -113,7 +113,7 @@ public class GUI extends JFrame implements ActionListener
         homeButton.setContentAreaFilled(false);
         homeButton.addActionListener(this);
 
-        //Reset button
+        // Reset button
         resetButton = new JButton();
         gameBackground.add(resetButton);
         resetButton.setBounds(442, 401, 34, 34);
@@ -121,20 +121,20 @@ public class GUI extends JFrame implements ActionListener
         resetButton.setContentAreaFilled(false);
         resetButton.addActionListener(this);
 
-        //X score
+        // X score
         xScoreLabel = new JLabel(Integer.toString(xScore));
         gameBackground.add(xScoreLabel);
         xScoreLabel.setFont(xScoreLabel.getFont().deriveFont(24.0f));
         xScoreLabel.setBounds(108, 35, 24, 24);
 
-        //O score
+        // O score
         oScoreLabel = new JLabel(Integer.toString(oScore));
         oScoreLabel.setText(Integer.toString(oScore));
         gameBackground.add(oScoreLabel);
         oScoreLabel.setFont(oScoreLabel.getFont().deriveFont(24.0f));
         oScoreLabel.setBounds(375, 35, 24, 24);
 
-        //Line
+        // Line
         for(int i=0; i<8; i++)
         {
             line[i] = new JLabel();
@@ -155,7 +155,7 @@ public class GUI extends JFrame implements ActionListener
     }
 
     /**
-     * draw line on winning line
+     * Draw line on winning line
      */
     public void winningLine(int n)
     {
@@ -194,7 +194,7 @@ public class GUI extends JFrame implements ActionListener
     }
 
     /**
-     * display finish screen UI components
+     * Display finish screen UI components
      */
     public void displayWinScreen(String t)
     {
@@ -209,7 +209,7 @@ public class GUI extends JFrame implements ActionListener
      */
     public void actionPerformed(ActionEvent e)
     {   
-        //Start menu
+        // Start menu
         if(e.getSource().equals(vsPlayerButton))
         {
             menuBackground.setVisible(false);
@@ -221,7 +221,7 @@ public class GUI extends JFrame implements ActionListener
             playGame = true;
         }
 
-        //Vs Ai
+        // Play against Ai
         if(e.getSource().equals(vsComButton))
         {
             menuBackground.setVisible(false);
@@ -233,7 +233,7 @@ public class GUI extends JFrame implements ActionListener
             playGame = true;
         }
 
-        //Vs another player
+        // Play against another player
         String turn = "-";
         if (game.turn == 0)
             turn = "X";
@@ -272,7 +272,7 @@ public class GUI extends JFrame implements ActionListener
             }
         }
 
-        //Home button
+        // Home button
         if(e.getSource().equals(homeButton))
         {
             game.resetGame();
@@ -285,7 +285,7 @@ public class GUI extends JFrame implements ActionListener
             gameBackground.setVisible(false);
         }
 
-        //Reset button
+        // Reset button
         if(e.getSource().equals(resetButton))
         {
             game.resetGame();
@@ -293,7 +293,7 @@ public class GUI extends JFrame implements ActionListener
             updataButtonIma();
         }
 
-        //Win screen button 
+        // Win screen button
         if(e.getSource().equals(winScreenButton))
         {
             for(int i=0; i<8; i++)
@@ -311,7 +311,7 @@ public class GUI extends JFrame implements ActionListener
     }
 
     /**
-     * Set board image same as board array
+     * Set board image equal to the board array
      */
     public void updataButtonIma()
     {

@@ -1,20 +1,15 @@
 import java.util.*;
+
 /**
- * Write a description of class Ai here.
+ * The main AI for tic-tac-toe. Attempts to win my getting three in a row.
  * 
- * @author Ping-Chun Chung
- * @version v1.0
+ * @author Ping-Chun Chung and Otakar Andrysek
+ * @version v1.0.1
  */
+
 public class Ai
 {
-
-    /**
-     * Constructor for objects of class Ai
-     */
-    public Ai()
-    {
-    }
-
+    // Generate a line to win
     public String[] createLineArr(String[][] b)
     {
         String[] arr = new String[8]; 
@@ -29,6 +24,7 @@ public class Ai
         return arr;
     }
 
+    // Find the next location to place symbol
     public int[] absLocation(String[][] b)
     {
         String[] arr = new String[8];
@@ -69,6 +65,7 @@ public class Ai
         return null;
     }
 
+    // Calculated out the next move
     public int calculatePoint(String[][] b, int firstPlay)
     {
         String[] arr = new String[8]; 
@@ -85,37 +82,31 @@ public class Ai
 
             if (o == 3){
                 point = 500;
-                //System.out.print(" o3");
             }
             else if (o == 2 & x == 0){
                 point = 10;
-                //System.out.print(" o2");
             }
             else if (o == 1 && x == 0){
                 point = 1;
-                //System.out.print(" o1");
             }
             else if (x == 3){
                 point = -100;
-                //System.out.print(" x3");
             }
             else if (x == 2 && o == 0){
                 point = -50;
-                //System.out.print(" x2");
             }
             else if (x == 1 && o == 0){
                 point = -3;
-                //System.out.print(" x1");
             }
             else {
                 point = 0;
-                //System.out.print(" 00");
             }
             totalPoint+=point;
         }
         return totalPoint;
     }
 
+    // Different logic for when game is nearing its end
     public boolean almostLose(String[][] b, int y, int x)
     {
         String[] arr = new String[8];
@@ -139,12 +130,12 @@ public class Ai
 
     public int countLetter(String str, String letter)
     {
-        int conuter = 0;
+        int counter = 0;
         for (int i = 0; i < 3; i++) {
             if (str.substring(i,i+1).equals(letter))
-                conuter++;
+                counter++;
         }
-        return conuter;
+        return counter;
     }
 
     public int[] getMove(String[][] b, int firstPlay)
@@ -159,8 +150,6 @@ public class Ai
         {
             for (int n=0; n<3; n++)
             {
-                //System.out.println("");
-                //System.out.print(((i)*3+n+1)+" ");
                 for (int ii=0; ii<3; ii++)
                 {
                     for (int nn=0; nn<3; nn++)
@@ -175,7 +164,6 @@ public class Ai
                 {
                     newBoard[i][n] = "O";
                     point = calculatePoint(newBoard, firstPlay);
-                    //System.out.print(" point:" + point);
 
                     if (absLocation(newBoard) != null)
                     {
@@ -194,19 +182,6 @@ public class Ai
                         newPoint = calculatePoint(newNewBoard, firstPlay);
                         if (newPoint < point && newPoint < -30)
                             point = newPoint;
-                        
-                        /*
-                        System.out.print(" newPoint:" + point);
-                        System.out.print("  ");
-                        for (int d=0; d<3; d++)
-                        {
-                            for (int e=0; e<3; e++)
-                            {   
-                                System.out.print(newNewBoard[d][e]);
-                            }
-                            System.out.print(" ");
-                        }
-                        */
                     }                   
                     
                     if (almostLose(newBoard,i,n))
@@ -218,27 +193,12 @@ public class Ai
                         move[0] = i;
                         move[1] = n;
                     }
-                    /*
-                    for (int d=0; d<3; d++)
-                    {
-                        for (int e=0; e<3; e++)
-                        {   
-                            System.out.print(newBoard[d][e]);
-                        }
-                        System.out.print(" ");
-                    }
-
-                    if (absLocation(newBoard) != null)
-                        System.out.print("  "+absLocation(newBoard)[0]+absLocation(newBoard)[1]);
-                    else
-                        System.out.print("    ");
-                    System.out.print("  move:"+move[0]+move[1]);
-                    */
                 }
                 try{Thread.sleep(50);}catch(InterruptedException e){System.out.println(e);}
             }
         }
         
+        // We have nothing to work off of, let's just be random
         if (boardEmpty)
         {
             move[0]=(int)(Math.random()*3);
